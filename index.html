@@ -12,14 +12,13 @@
       // Dynamically set WhatsApp link
       waLink.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(phraseEl.innerText)}`;
 
-      // Copy & show success message
+      // Copy & change button color
       copyButton.addEventListener('click', () => {
         navigator.clipboard.writeText(phraseEl.innerText)
           .then(() => {
-            const originalText = copyButton.innerText;
-            copyButton.innerText = '✅ Copied!';
+            copyButton.style.backgroundColor = '#00f'; // blue
             setTimeout(() => {
-              copyButton.innerText = originalText;
+              copyButton.style.backgroundColor = ''; // revert to original
             }, 1500);
           })
           .catch(err => console.error('Failed to copy text:', err));
