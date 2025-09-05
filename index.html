@@ -1,0 +1,110 @@
+<style>
+  @media (max-width: 600px) {
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .button-container button,
+    .button-container a {
+      width: 80%;
+      text-align: center;
+    }
+  }
+</style>
+
+<div style="font-family: 'Inter', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px;">
+
+  <p class="phrase" style="
+      font-family: 'Merriweather', serif;
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 500;
+      color: #333333;
+      margin-bottom: 20px;
+      text-align: left;
+      padding: 10px 15px;
+      border-left: 4px solid #FFC857;
+      background-color: #fff8f0;
+  ">
+    Hi Albert, this is my Pronunciation Test:<br><br>
+    <strong>Okay, so here is the truth: I am leaving.<br><br>
+I could not stay another day. I picked my fight and failed.<br><br>
+I tried to tighten my routine, to straighten my desk, to make the plan perfect, but it kept getting harder. You would think I would be totally fine, or that I would just go quietly, but I had not written the last lines, I had not eaten properly, and I did not sleep.<br><br>
+The same pattern kept repeating: I would push through the night, pull myself together by morning, and still my mood felt empty. People tried to help, a friend in the garden, a colleague at the bottom of the list, but they could not lift that burden.<br><br>
+So, I decided: I am going to go. I am going to make my move today. Not later, but now. I am not saying it is easy, but it is necessary.<br><br>
+I do not have every answer; I do not own all the truth, and that is okay. I know I will be tired, I know I will be tested, but I will be stronger for it.<br><br>
+I want to find a place where the air sounds smooth and the moon feels steady. Maybe I will cross a mountain, maybe I will pass a fountain in a strange town, or maybe I will meet a person who makes me feel totally good.<br><br>
+But I am not going back. I should not, and I will not. So here is my promise: I will keep moving, step by step, until the pattern breaks and something new can finally happen.</strong>
+  </p>
+
+  <div class="button-container">
+    <button class="copyButton"
+      style="
+        background-color: #FFC857;
+        color: #000000;
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease;
+        min-width: 130px;
+      "
+      onmouseover="this.style.backgroundColor='#13519A'; this.style.color='#FAF9F6';"
+      onmouseout="this.style.backgroundColor='#FFC857'; this.style.color='#000';">
+      Copy phrase
+    </button>
+
+    <a class="whatsappLink" target="_blank" rel="noopener"
+      style="
+        display: inline-block;
+        background-color: #FFC857;
+        color: #000;
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      "
+      onmouseover="this.style.backgroundColor='#13519A'; this.style.color='#FAF9F6';"
+      onmouseout="this.style.backgroundColor='#FFC857'; this.style.color='#000';">
+      Send via WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<script>
+  const phoneNumber = '+34677368437';
+
+  document.querySelectorAll('.phrase').forEach((phraseEl, index) => {
+    const container = phraseEl.parentElement;
+    const copyButton = container.querySelector('.copyButton');
+    const waLink = container.querySelector('.whatsappLink');
+
+    // Dynamically set WhatsApp link
+    waLink.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(phraseEl.innerText)}`;
+
+    // Copy & show success message
+    copyButton.addEventListener('click', () => {
+      navigator.clipboard.writeText(phraseEl.innerText)
+        .then(() => {
+          const originalText = copyButton.innerText;
+          copyButton.innerText = '✅ Copied!';
+          setTimeout(() => {
+            copyButton.innerText = originalText;
+          }, 1500);
+        })
+        .catch(err => console.error('Failed to copy text:', err));
+    });
+  });
+</script>
