@@ -94,20 +94,17 @@ But I am not going back. I should not, and I will not. So here is my promise: I 
     // Dynamically set WhatsApp link
     waLink.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(phraseEl.innerText)}`;
 
-    // Copy & show success message
+    // Copy & permanently change button color
     copyButton.addEventListener('click', () => {
       navigator.clipboard.writeText(phraseEl.innerText)
         .then(() => {
-          const originalText = copyButton.innerText;
           copyButton.innerText = '✅ Copied!';
-          setTimeout(() => {
-            copyButton.innerText = originalText;
-          }, 1500);
+          copyButton.style.backgroundColor = '#13519A';
+          copyButton.style.color = '#FAF9F6';
+          copyButton.onmouseover = null;  // disable hover effect
+          copyButton.onmouseout = null;
         })
         .catch(err => console.error('Failed to copy text:', err));
     });
   });
 </script>
-
-
-
