@@ -13,6 +13,14 @@
       text-align: center;
     }
   }
+
+  /* Make phrase container fully expand */
+  .phrase {
+    overflow: visible;       /* allow text to fully show */
+    height: auto;            /* remove any fixed height */
+    white-space: normal;     /* allow line breaks */
+    word-wrap: break-word;   /* wrap long words */
+  }
 </style>
 
 <div style="font-family: 'Inter', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px;">
@@ -86,7 +94,7 @@ But I am not going back. I should not, and I will not. So here is my promise: I 
 <script>
   const phoneNumber = '+34677368437';
 
-  document.querySelectorAll('.phrase').forEach((phraseEl, index) => {
+  document.querySelectorAll('.phrase').forEach((phraseEl) => {
     const container = phraseEl.parentElement;
     const copyButton = container.querySelector('.copyButton');
     const waLink = container.querySelector('.whatsappLink');
